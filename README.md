@@ -21,25 +21,25 @@ https://academic.oup.com/jssam/article/8/1/120/5716393
 
 ## Cite as:
 
-@article{wisniowski2020integrating,
+@article{wisniowski2020integrating,\
 
-  title={Integrating probability and nonprobability samples for survey inference},
+  title={Integrating probability and nonprobability samples for survey inference},\
 
-  author={Wi{\'s}niowski, Arkadiusz and Sakshaug, Joseph W and Perez Ruiz, Diego Andres and Blom, Annelies G},
+  author={Wi{\'s}niowski, Arkadiusz and Sakshaug, Joseph W and Perez Ruiz, Diego Andres and Blom, Annelies G},\
 
-  journal={Journal of Survey Statistics and Methodology},
+  journal={Journal of Survey Statistics and Methodology},  
 
-  volume={8},
+  volume={8},  
   
-  number={1},
+  number={1},\
    
-  pages={120--147},
+  pages={120--147},  
   
-  year={2020},
+  year={2020},\
   
-  publisher={Oxford University Press},
+  publisher={Oxford University Press},\
   
-  DOI={https://doi.org/10.1093/jssam/smz051}
+  DOI={https://doi.org/10.1093/jssam/smz051 }\
   
 }
 
