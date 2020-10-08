@@ -19,7 +19,7 @@ Journal of Survey Statistics and Methodology, Volume 8, Issue 1, February 2020, 
 
 https://academic.oup.com/jssam/article/8/1/120/5716393
 
-Cite as:
+## Cite as:
 
 @article{wisniowski2020integrating,
 
