@@ -23,7 +23,7 @@ https://academic.oup.com/jssam/article/8/1/120/5716393
 
 @article{wisniowski2020integrating,\
   title={Integrating probability and nonprobability samples for survey inference},\
-  author={Wi{\'s}niowski, Arkadiusz and Sakshaug, Joseph W and Perez Ruiz, Diego Andres and Blom, Annelies G},\
+  author={Wi{\\'s}niowski, Arkadiusz and Sakshaug, Joseph W and Perez Ruiz, Diego Andres and Blom, Annelies G},\
   journal={Journal of Survey Statistics and Methodology},  
   volume={8},  
   number={1},\
