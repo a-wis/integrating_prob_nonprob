@@ -40,7 +40,7 @@ gen.sample=function(beta=c(1,0.5,.1), n=50, m_x=c(0,5), sd_response=1, sd_cov1=1
   #covariate No. 2 with correlation with cov1
   #if bias is specified as a vector, response is calculated for a given set of sampled X
   if (length(bias)==1) {
-    Y = X%*%beta + rnorm(n,0,sd_response)
+    Y = X%*%(beta*bias) + rnorm(n,0,sd_response)
   } else {
     Y = X%*%c(beta[-3],beta[3]*bias[1]) + rnorm(n,0,sd_response)
     for (i in 2:length(bias)){

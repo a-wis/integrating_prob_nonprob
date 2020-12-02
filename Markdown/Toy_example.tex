@@ -1,0 +1,449 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Integrating Probability and Nonprobability Samples for Survey Inference},
+  pdfauthor={Arkadiusz Wiśniowski, Joseph W. Sakshaug, Diego A. Perez Ruiz, Annelies G. Blom},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Integrating Probability and Nonprobability Samples for Survey
+Inference}
+\author{Arkadiusz Wiśniowski\footnote{Social Statistics Department,
+  University of Manchester, United Kindgom; Contact:
+  \href{mailto:a.wisniowski@manchester.ac.uk}{\nolinkurl{a.wisniowski@manchester.ac.uk}}},
+Joseph W. Sakshaug\footnote{Department of Statistical Methods Research,
+  Institute for Employment Research; Department of Statistics, Ludwig
+  Maximilian University of Munich; and the School of Social Sciences,
+  University of Mannheim, Germany}, Diego A. Perez Ruiz\footnote{Department
+  of Mathematics, University of Manchester, United Kindgom}, Annelies G.
+Blom\footnote{Collaborative Research Center 884 ``Political Economy of
+  Reforms'' and the School of Social Sciences, University of Mannheim,
+  Germany}}
+\date{20 April 2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+This document introduces computer code that reproduces the results of
+estimating model parameters in a linear regression using Bayesian
+inference. The estimation uses simulated probability data with prior
+distributions constructed using simulated nonprobability data. It is
+based on the method as proposed in:
+
+Integrating Probability and Nonprobability Samples for Survey Inference,
+\emph{Journal of Survey Statistics and Methodology}, Volume 8, Issue 1,
+February 2020, Pages 120--147,
+\url{https://doi.org/10.1093/jssam/smz051}.
+
+The repository with the code is available at
+\url{https://github.com/a-wis/integrating_prob_nonprob}.
+
+\hypertarget{code}{%
+\section{Code}\label{code}}
+
+\hypertarget{required-packages}{%
+\subsection{Required packages}\label{required-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{generating-toy-data}{%
+\subsection{Generating toy data}\label{generating-toy-data}}
+
+The function \texttt{gen.sample()} generates a sample of size \texttt{n}
+of a continuous response variable with the standard deviation
+\texttt{sd\_response}. The mean is a linear equation given by parameters
+\texttt{beta} (a vector including intercept) and two continuous
+predictors with means provided in the vector \texttt{m\_x} and standard
+deviations \texttt{sd\_cov1} and \texttt{sd\_cov2}, respectively. The
+two predictors can also be correlated with correlation coefficient
+\texttt{corr}. The response can be generated assuming a certain level of
+\texttt{bias} in the second predictor (for generating a nonprobability
+sample). Argument \texttt{bias} can also take a vector as an input.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gen.sample }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{beta =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.1}\NormalTok{), }\AttributeTok{n =} \DecValTok{50}\NormalTok{, }\AttributeTok{m\_x =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{), }\AttributeTok{sd\_response =} \DecValTok{1}\NormalTok{, }
+    \AttributeTok{sd\_cov1 =} \DecValTok{1}\NormalTok{, }\AttributeTok{sd\_cov2 =} \DecValTok{1}\NormalTok{, }\AttributeTok{corr =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{bias =} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{    x1 }\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(n, m\_x[}\DecValTok{1}\NormalTok{], sd\_cov1)  }\CommentTok{\#covariate 1}
+\NormalTok{    x2\_m }\OtherTok{=}\NormalTok{ m\_x[}\DecValTok{2}\NormalTok{]  }\CommentTok{\# covariate2 mean}
+\NormalTok{    x2 }\OtherTok{=}\NormalTok{ x2\_m }\SpecialCharTok{+}\NormalTok{ sd\_cov2}\SpecialCharTok{/}\NormalTok{sd\_cov1 }\SpecialCharTok{*}\NormalTok{ corr }\SpecialCharTok{*}\NormalTok{ (x1 }\SpecialCharTok{{-}}\NormalTok{ m\_x[}\DecValTok{1}\NormalTok{]) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, }\FunctionTok{sqrt}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ corr}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{*} 
+\NormalTok{        sd\_cov2)}
+\NormalTok{    X }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, n), x1, x2), n, }\FunctionTok{length}\NormalTok{(beta))}
+    \CommentTok{\# covariate No. 2 with correlation with cov1 if bias is specified as a vector,}
+    \CommentTok{\# response is calculated for a given set of sampled X}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(bias) }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) \{}
+\NormalTok{        Y }\OtherTok{=}\NormalTok{ X }\SpecialCharTok{\%*\%}\NormalTok{ (beta }\SpecialCharTok{*}\NormalTok{ bias) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, sd\_response)}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        Y }\OtherTok{=}\NormalTok{ X }\SpecialCharTok{\%*\%} \FunctionTok{c}\NormalTok{(beta[}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{], beta[}\DecValTok{3}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ bias[}\DecValTok{1}\NormalTok{]) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, sd\_response)}
+        \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(bias)) \{}
+\NormalTok{            Y }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(Y, X }\SpecialCharTok{\%*\%} \FunctionTok{c}\NormalTok{(beta[}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{], beta[}\DecValTok{3}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ bias[i]) }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(n, }\DecValTok{0}\NormalTok{, sd\_response))}
+\NormalTok{        \}}
+\NormalTok{    \}}
+    \CommentTok{\# returns a list with response Y and predictors matrix X as an output}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{Y =}\NormalTok{ Y, }\AttributeTok{X =}\NormalTok{ X))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{calculating-posterior-distribution}{%
+\subsection{Calculating posterior
+distribution}\label{calculating-posterior-distribution}}
+
+This function calculates posterior mean and variance of the vector of
+linear model coefficients and mean and variance of the precision
+(inverse variance) of the linear regression model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calc.posterior }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(mu\_0, k\_0, }\AttributeTok{Vin =} \FunctionTok{diag}\NormalTok{(}\FunctionTok{length}\NormalTok{(mu\_0)), }\AttributeTok{a\_0 =} \DecValTok{0}\NormalTok{, }\AttributeTok{b\_0 =} \DecValTok{0}\NormalTok{, }
+    \AttributeTok{y =}\NormalTok{ Y, }\AttributeTok{x =}\NormalTok{ X) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{dim}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(x))[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{!=} \FunctionTok{length}\NormalTok{(mu\_0) }\SpecialCharTok{|} \FunctionTok{length}\NormalTok{(y) }\SpecialCharTok{!=} \FunctionTok{dim}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(x))[}\DecValTok{1}\NormalTok{]) }
+        \FunctionTok{print}\NormalTok{(}\StringTok{"Dimensions mismatch!"}\NormalTok{) }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        n\_mu\_0 }\OtherTok{=} \FunctionTok{length}\NormalTok{(mu\_0)}
+\NormalTok{        p }\OtherTok{=} \FunctionTok{dim}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(x))[}\DecValTok{2}\NormalTok{]}
+\NormalTok{        n }\OtherTok{=} \FunctionTok{length}\NormalTok{(y)}
+\NormalTok{        V }\OtherTok{=}\NormalTok{ Vin }\SpecialCharTok{*}\NormalTok{ k\_0}
+        \CommentTok{\# some OLS values}
+\NormalTok{        mu\_hat }\OtherTok{=} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}\SpecialCharTok{$}\NormalTok{coefficients)}
+\NormalTok{        xtx }\OtherTok{=} \FunctionTok{t}\NormalTok{(x) }\SpecialCharTok{\%*\%}\NormalTok{ x}
+\NormalTok{        RSS }\OtherTok{=} \FunctionTok{t}\NormalTok{(y }\SpecialCharTok{{-}}\NormalTok{ x }\SpecialCharTok{\%*\%}\NormalTok{ mu\_hat) }\SpecialCharTok{\%*\%}\NormalTok{ (y }\SpecialCharTok{{-}}\NormalTok{ x }\SpecialCharTok{\%*\%}\NormalTok{ mu\_hat)}
+        \CommentTok{\# posterior mean of mu}
+\NormalTok{        Sigma\_t }\OtherTok{=} \FunctionTok{solve}\NormalTok{(xtx }\SpecialCharTok{+} \FunctionTok{solve}\NormalTok{(V))}
+\NormalTok{        W }\OtherTok{=}\NormalTok{ Sigma\_t }\SpecialCharTok{\%*\%}\NormalTok{ xtx}
+\NormalTok{        mu\_mean }\OtherTok{=}\NormalTok{ W }\SpecialCharTok{\%*\%}\NormalTok{ mu\_hat }\SpecialCharTok{+}\NormalTok{ (}\FunctionTok{diag}\NormalTok{(p) }\SpecialCharTok{{-}}\NormalTok{ W) }\SpecialCharTok{\%*\%} \FunctionTok{as.matrix}\NormalTok{(mu\_0)}
+        
+\NormalTok{        SS }\OtherTok{=}\NormalTok{ RSS }\SpecialCharTok{+} \FunctionTok{t}\NormalTok{(mu\_hat }\SpecialCharTok{{-}} \FunctionTok{as.matrix}\NormalTok{(mu\_0)) }\SpecialCharTok{\%*\%} \FunctionTok{solve}\NormalTok{(}\FunctionTok{solve}\NormalTok{(xtx) }\SpecialCharTok{+}\NormalTok{ V) }\SpecialCharTok{\%*\%}\NormalTok{ (mu\_hat }\SpecialCharTok{{-}} 
+            \FunctionTok{as.matrix}\NormalTok{(mu\_0))}
+\NormalTok{        v }\OtherTok{=}\NormalTok{ n }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ a\_0}
+\NormalTok{        mu\_var }\OtherTok{=}\NormalTok{ Sigma\_t }\SpecialCharTok{*}\NormalTok{ (}\FunctionTok{as.numeric}\NormalTok{(SS) }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ b\_0)}\SpecialCharTok{/}\NormalTok{(n }\SpecialCharTok{+} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ a\_0 }\SpecialCharTok{{-}} \DecValTok{2}\NormalTok{)}
+        \CommentTok{\# posterior of tau}
+\NormalTok{        tau\_mean }\OtherTok{=}\NormalTok{ (n}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ a\_0)}\SpecialCharTok{/}\NormalTok{(SS}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ b\_0)}
+\NormalTok{        tau\_var }\OtherTok{=}\NormalTok{ (n}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ a\_0)}\SpecialCharTok{/}\NormalTok{(SS}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ b\_0)}\SpecialCharTok{\^{}}\DecValTok{2}
+        \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{mu\_mean =}\NormalTok{ mu\_mean, }\AttributeTok{mu\_cov =} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(mu\_var)), }\AttributeTok{tau\_mean\_sd =} \FunctionTok{c}\NormalTok{(tau\_mean, }
+            \FunctionTok{sqrt}\NormalTok{(tau\_var))))}
+\NormalTok{    \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{priors-functions}{%
+\subsection{Priors functions}\label{priors-functions}}
+
+These functions represent the assumptions of the prior distributions
+constructed using nonprobability data (Section 2.1 of the article).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conjugate, Eq. 14}
+\NormalTok{fun.hot.c}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(hot.n,n)\{}\ControlFlowTok{if}\NormalTok{ (hot.n }\SpecialCharTok{\textless{}} \FloatTok{0.05}\NormalTok{) }\DecValTok{1}\SpecialCharTok{/}\FunctionTok{log}\NormalTok{(n) }\ControlFlowTok{else} \DecValTok{1}\SpecialCharTok{/}\NormalTok{n\}   }
+\CommentTok{\# conjugate{-}distance, Eq. 16}
+\NormalTok{fun.diff.c1}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(bp,bnp,snp)\{}\FunctionTok{diag}\NormalTok{(}\FunctionTok{pmax}\NormalTok{((bp}\SpecialCharTok{{-}}\NormalTok{bnp)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,snp}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))\}     }
+\CommentTok{\# Zellner, Eq. 15}
+\NormalTok{fun.hot.z2}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(hot.n,n)\{}\ControlFlowTok{if}\NormalTok{ (hot.n }\SpecialCharTok{\textless{}} \FloatTok{0.05}\NormalTok{) (n}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\ControlFlowTok{else} \DecValTok{1}\NormalTok{\} }
+\CommentTok{\# Zellner{-}distance, Eq.17}
+\NormalTok{fun.diff.z1}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(bp,bnp,snp)\{}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{pmax}\NormalTok{((bp}\SpecialCharTok{{-}}\NormalTok{bnp)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,snp}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)))\}     }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{hotellings-test}{%
+\subsection{Hotelling's test}\label{hotellings-test}}
+
+Hotelling's test is used in calculating the posterior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hotelling.test }\OtherTok{=}\ControlFlowTok{function}\NormalTok{(lm\_prob, lm\_np)\{}
+\NormalTok{  xbar }\OtherTok{=}\NormalTok{ lm\_prob}\SpecialCharTok{$}\NormalTok{coefficients}
+\NormalTok{  mu\_0 }\OtherTok{=}\NormalTok{ lm\_np}\SpecialCharTok{$}\NormalTok{coefficients}
+\NormalTok{  vcovm }\OtherTok{=} \FunctionTok{vcov}\NormalTok{(lm\_prob)}
+  
+\NormalTok{  p }\OtherTok{=} \FunctionTok{length}\NormalTok{(lm\_prob}\SpecialCharTok{$}\NormalTok{coefficients)}
+\NormalTok{  n }\OtherTok{=} \FunctionTok{length}\NormalTok{(lm\_prob}\SpecialCharTok{$}\NormalTok{residuals)}
+  
+\NormalTok{  t2 }\OtherTok{=} \FunctionTok{t}\NormalTok{(xbar }\SpecialCharTok{{-}}\NormalTok{ mu\_0)}\SpecialCharTok{\%*\%}\FunctionTok{solve}\NormalTok{(vcovm)}\SpecialCharTok{\%*\%}\NormalTok{(xbar }\SpecialCharTok{{-}}\NormalTok{ mu\_0)}
+\NormalTok{  f }\OtherTok{=}\NormalTok{ p}\SpecialCharTok{*}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{p)}
+\NormalTok{  Fstat }\OtherTok{=}\NormalTok{ t2}\SpecialCharTok{/}\NormalTok{f}
+\NormalTok{  p\_val }\OtherTok{=} \FunctionTok{pf}\NormalTok{(Fstat,p,n}\SpecialCharTok{{-}}\NormalTok{p,}\AttributeTok{lower.tail =}\NormalTok{ F)}
+  \FunctionTok{return}\NormalTok{(p\_val)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{applying-the-method}{%
+\section{Applying the method}\label{applying-the-method}}
+
+This function takes an input of two lists (such as those resulting from
+the \texttt{gen.sample()} function). The lists represent probability
+(\texttt{sample\_prob}) and nonprobability (\texttt{sample\_np}) data.
+Each list has two elements: \texttt{Y} being the response variable, and
+\texttt{X} - the predictors matrix with a column of ones for intercept.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gen.res }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(sample\_prob,sample\_np)\{}
+  \CommentTok{\#sample\_prob {-} sample of prob data}
+  \CommentTok{\#sample of nprob data}
+  \CommentTok{\# conjugate non{-}inf result}
+\NormalTok{  yp\_std}\OtherTok{=}\NormalTok{sample\_prob}\SpecialCharTok{$}\NormalTok{Y}
+\NormalTok{  xp\_std}\OtherTok{=}\NormalTok{sample\_prob}\SpecialCharTok{$}\NormalTok{X}
+\NormalTok{  coefsize}\OtherTok{=}\FunctionTok{dim}\NormalTok{(xp\_std)[}\DecValTok{2}\NormalTok{] }\CommentTok{\#number of coefficients}
+\NormalTok{  k}\OtherTok{=}\FunctionTok{length}\NormalTok{(yp\_std) }\CommentTok{\# length of Prob sample}
+\NormalTok{  result\_ni}\OtherTok{=}\FunctionTok{calc.posterior}\NormalTok{(}\AttributeTok{mu\_0=}\FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FunctionTok{dim}\NormalTok{(xp\_std)[}\DecValTok{2}\NormalTok{]), }\AttributeTok{k\_0=}\NormalTok{k, }\AttributeTok{y=}\NormalTok{yp\_std, }\AttributeTok{x=}\NormalTok{xp\_std)}
+  \CommentTok{\#ML prob data}
+\NormalTok{  lm\_pobj }\OtherTok{=} \FunctionTok{lm}\NormalTok{(yp\_std }\SpecialCharTok{\textasciitilde{}}\NormalTok{ xp\_std}\DecValTok{{-}1}\NormalTok{)}
+  
+  \CommentTok{\# nonprob data}
+\NormalTok{  ynp\_std}\OtherTok{=}\NormalTok{sample\_np}\SpecialCharTok{$}\NormalTok{Y}
+\NormalTok{  xnp\_std}\OtherTok{=}\NormalTok{sample\_np}\SpecialCharTok{$}\NormalTok{X}
+\NormalTok{  nnp}\OtherTok{=}\FunctionTok{length}\NormalTok{(ynp\_std) }\CommentTok{\#np sample length}
+  
+  \CommentTok{\#ML for nonprob }
+\NormalTok{  lm\_npobj }\OtherTok{=} \FunctionTok{lm}\NormalTok{(ynp\_std }\SpecialCharTok{\textasciitilde{}}\NormalTok{ xnp\_std}\DecValTok{{-}1}\NormalTok{)}
+  \CommentTok{\#hotelling test}
+\NormalTok{  hot.n }\OtherTok{=} \FunctionTok{hotelling.test}\NormalTok{(lm\_pobj,lm\_npobj)}
+  
+  \CommentTok{\#conjugate posterior \#k\_0fun.hot.c(hot.n,nnp)}
+\NormalTok{  result\_c }\OtherTok{=} \FunctionTok{calc.posterior}\NormalTok{(}\AttributeTok{mu\_0 =}\NormalTok{ lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+                            \AttributeTok{k\_0 =} \FunctionTok{fun.hot.c}\NormalTok{(hot.n,nnp), }\AttributeTok{y=}\NormalTok{yp\_std,}\AttributeTok{x=}\NormalTok{xp\_std)}
+  \CommentTok{\#conjugate difference posterior}
+  \CommentTok{\# fun.diff.c1(lm\_pobj$coefficients, }
+  \CommentTok{\#             lm\_npobj$coefficients, }
+  \CommentTok{\#             summary(lm\_npobj)$coefficients[,2])}
+\NormalTok{  result\_cd }\OtherTok{=} \FunctionTok{calc.posterior}\NormalTok{(}\AttributeTok{mu\_0 =}\NormalTok{ lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+                             \AttributeTok{k\_0 =} \DecValTok{1}\SpecialCharTok{/}\FunctionTok{log}\NormalTok{(nnp), }
+                             \AttributeTok{Vin=}\FunctionTok{fun.diff.c1}\NormalTok{(lm\_pobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+\NormalTok{                                             lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+                                             \FunctionTok{summary}\NormalTok{(lm\_npobj)}\SpecialCharTok{$}\NormalTok{coefficients[,}\DecValTok{2}\NormalTok{]), }
+                             \AttributeTok{y=}\NormalTok{yp\_std,}\AttributeTok{x=}\NormalTok{xp\_std) }\CommentTok{\#}
+  \CommentTok{\#conjugate Zellner fun.hot.z2(hot.n,nnp)}
+\NormalTok{  result\_z }\OtherTok{=} \FunctionTok{calc.posterior}\NormalTok{(}
+  \AttributeTok{mu\_0 =}\NormalTok{ lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+  \AttributeTok{k\_0 =} \FunctionTok{fun.hot.z2}\NormalTok{(hot.n,nnp), }\CommentTok{\#changed for the name}
+  \AttributeTok{y=}\NormalTok{yp\_std,}\AttributeTok{x=}\NormalTok{xp\_std,}
+  \AttributeTok{Vin =} \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(xnp\_std)}\SpecialCharTok{\%*\%}\NormalTok{xnp\_std))}
+  
+  \CommentTok{\#conjugate Zellner difference fun.diff.z1}
+\NormalTok{  result\_zd }\OtherTok{=} \FunctionTok{calc.posterior}\NormalTok{(}
+  \AttributeTok{mu\_0 =}\NormalTok{ lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+  \AttributeTok{k\_0 =}\NormalTok{ nnp,}
+  \AttributeTok{y=}\NormalTok{yp\_std,}\AttributeTok{x=}\NormalTok{xp\_std,}
+  \AttributeTok{Vin =} \FunctionTok{fun.diff.z1}\NormalTok{(lm\_pobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+\NormalTok{                    lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients,}
+                    \FunctionTok{summary}\NormalTok{(lm\_npobj)}\SpecialCharTok{$}\NormalTok{coefficients[,}\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%*\%}
+    \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(xnp\_std)}\SpecialCharTok{\%*\%}\NormalTok{xnp\_std) }\SpecialCharTok{\%*\%} 
+    \FunctionTok{fun.diff.z1}\NormalTok{(lm\_pobj}\SpecialCharTok{$}\NormalTok{coefficients,}
+\NormalTok{                    lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients, }
+                    \FunctionTok{summary}\NormalTok{(lm\_npobj)}\SpecialCharTok{$}\NormalTok{coefficients[,}\DecValTok{2}\NormalTok{]))}
+  
+  \CommentTok{\# wrapping results}
+\NormalTok{  result }\OtherTok{=} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{c}\NormalTok{(k,nnp,}
+\NormalTok{                   result\_ni}\SpecialCharTok{$}\NormalTok{mu\_mean,result\_ni}\SpecialCharTok{$}\NormalTok{mu\_cov,}
+\NormalTok{                   result\_c}\SpecialCharTok{$}\NormalTok{mu\_mean,result\_c}\SpecialCharTok{$}\NormalTok{mu\_cov,}
+\NormalTok{                   result\_z}\SpecialCharTok{$}\NormalTok{mu\_mean,result\_z}\SpecialCharTok{$}\NormalTok{mu\_cov,}
+\NormalTok{                   result\_cd}\SpecialCharTok{$}\NormalTok{mu\_mean,result\_cd}\SpecialCharTok{$}\NormalTok{mu\_cov,}
+\NormalTok{                   result\_zd}\SpecialCharTok{$}\NormalTok{mu\_mean,result\_zd}\SpecialCharTok{$}\NormalTok{mu\_cov,}
+\NormalTok{                   lm\_pobj}\SpecialCharTok{$}\NormalTok{coefficients,}\FunctionTok{summary}\NormalTok{(lm\_pobj)}\SpecialCharTok{$}\NormalTok{coefficients[,}\DecValTok{2}\NormalTok{],}
+\NormalTok{                   lm\_npobj}\SpecialCharTok{$}\NormalTok{coefficients,}\FunctionTok{summary}\NormalTok{(lm\_npobj)}\SpecialCharTok{$}\NormalTok{coefficients[,}\DecValTok{2}\NormalTok{],hot.n)}
+\NormalTok{            )}
+  
+  \CommentTok{\#saving as dataframe}
+\NormalTok{  par.names }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Beta"}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{coefsize)) }
+\NormalTok{  columns.name}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\StringTok{"P\_ss"}\NormalTok{,}\StringTok{"NP\_ss"}\NormalTok{,}
+                 \CommentTok{\#non{-}inf posterior estimates (mu=mean and se=standard dev)}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"NI.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"NI.se."}\NormalTok{,par.names),}
+                 \CommentTok{\#conjugate}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"C.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"C.se."}\NormalTok{,par.names),}
+                 \CommentTok{\#Zellner}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"Z.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Z.se."}\NormalTok{,par.names),}
+                 \CommentTok{\#conjugate{-}difference}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"CD.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"CD.se."}\NormalTok{,par.names),}
+                 \CommentTok{\#Zellner difference}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"ZD.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"ZD.se."}\NormalTok{,par.names),}
+                 \CommentTok{\#ML for probability data with standard errors}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"MLP.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"MLP.se."}\NormalTok{,par.names),}
+                 \CommentTok{\#ML for non{-}probability data with standard errors}
+                 \FunctionTok{paste0}\NormalTok{(}\StringTok{"MLNP.mu."}\NormalTok{,par.names),}\FunctionTok{paste0}\NormalTok{(}\StringTok{"MLNP.se."}\NormalTok{,par.names),}\StringTok{"Hotelling.p"}\NormalTok{)}
+\NormalTok{  result}\OtherTok{=}\FunctionTok{as.data.frame}\NormalTok{(result)}
+  \FunctionTok{colnames}\NormalTok{(result) }\OtherTok{=}\NormalTok{ columns.name}
+  
+  \FunctionTok{return}\NormalTok{(result)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{toy-example}{%
+\section{Toy Example}\label{toy-example}}
+
+\hypertarget{generating-data}{%
+\subsection{Generating data}\label{generating-data}}
+
+Probability sample with parameters c(1, 0.5, .1) and size \(n=50\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample\_prob}\OtherTok{=}\FunctionTok{gen.sample}\NormalTok{(}\AttributeTok{beta=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.5}\NormalTok{,.}\DecValTok{1}\NormalTok{), }\CommentTok{\#true coefficients}
+                       \AttributeTok{n=}\DecValTok{50}\NormalTok{, }\CommentTok{\# sample size}
+                       \AttributeTok{m\_x=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{), }\CommentTok{\#covariate means}
+                       \AttributeTok{sd\_response=}\DecValTok{1}\NormalTok{, }\CommentTok{\#sd response variable}
+                       \AttributeTok{sd\_cov1=}\DecValTok{1}\NormalTok{, }\AttributeTok{sd\_cov2=}\DecValTok{1}\NormalTok{, }\CommentTok{\# sd covariates}
+                       \AttributeTok{corr=}\FloatTok{0.1}\NormalTok{, }\CommentTok{\#correcation of covariates}
+                       \AttributeTok{bias=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\CommentTok{\#bias= 1 = unbiased}
+\end{Highlighting}
+\end{Shaded}
+
+Probability sample with size \(n=1000\) and bias in the third
+coefficient of \(+25\%\), i.e.~the data are generated with parameters
+c(1, 0.5, .125)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample\_np}\OtherTok{=}\FunctionTok{gen.sample}\NormalTok{(}\AttributeTok{beta=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{0.5}\NormalTok{,.}\DecValTok{1}\NormalTok{), }
+                     \AttributeTok{n=}\DecValTok{1000}\NormalTok{, }\CommentTok{\#sample size}
+                     \AttributeTok{m\_x=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{), }\CommentTok{\#covariate means}
+                     \AttributeTok{sd\_response=}\DecValTok{1}\NormalTok{, }\DocumentationTok{\#\#sd response variable}
+                     \AttributeTok{sd\_cov1=}\DecValTok{1}\NormalTok{, }\AttributeTok{sd\_cov2=}\DecValTok{1}\NormalTok{,}\CommentTok{\# sd covariates}
+                     \AttributeTok{corr=}\FloatTok{0.1}\NormalTok{,}\CommentTok{\#correcation of covariates}
+                     \AttributeTok{bias=}\FunctionTok{c}\NormalTok{(}\FloatTok{1.25}\NormalTok{)) }\CommentTok{\#bias= 1 = unbiased = here, 25\% bias iin third coefficient}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{producing-coefficients}{%
+\subsection{Producing coefficients}\label{producing-coefficients}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simA}\OtherTok{=}\FunctionTok{gen.res}\NormalTok{(sample\_prob,sample\_np)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{printing-results}{%
+\subsection{Printing results}\label{printing-results}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simA }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =}\NormalTok{ NI.mu.Beta1}\SpecialCharTok{:}\NormalTok{MLNP.se.Beta3, }\AttributeTok{names\_to =} \FunctionTok{c}\NormalTok{(}\StringTok{"method"}\NormalTok{, }\StringTok{"moment"}\NormalTok{, }
+    \StringTok{"parameter"}\NormalTok{), }\AttributeTok{names\_sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ moment, }
+    \AttributeTok{values\_from =}\NormalTok{ value) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ View}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{saving-results-in-a-pasteable-table}{%
+\subsection{Saving results in a pasteable
+table}\label{saving-results-in-a-pasteable-table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simA }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =}\NormalTok{ NI.mu.Beta1}\SpecialCharTok{:}\NormalTok{MLNP.se.Beta3, }\AttributeTok{names\_to =} \FunctionTok{c}\NormalTok{(}\StringTok{"method"}\NormalTok{, }\StringTok{"moment"}\NormalTok{, }
+    \StringTok{"parameter"}\NormalTok{), }\AttributeTok{names\_sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ moment, }
+    \AttributeTok{values\_from =}\NormalTok{ value) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{write.table}\NormalTok{(}\AttributeTok{file =} \StringTok{"clipboard"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
